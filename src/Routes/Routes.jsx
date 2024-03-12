@@ -12,8 +12,9 @@ import SignUp from "../Layout/Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../Layout/Pages/Shared/Secret/Secret";
 
-import MyCart from "../Layout/Pages/Dashboard/MyCart/MyCart";
+
 import Dashboard from "../Layout/Dashboard";
+import Cart from "../Layout/Pages/Dashboard/Cart/Cart";
 
 
 
@@ -51,11 +52,11 @@ import Dashboard from "../Layout/Dashboard";
 
     {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>, 
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>, 
       children: [
         {
-          path: "mycart", 
-          element: <MyCart></MyCart>
+          path: "cart", 
+          element:<Cart></Cart>
         }
       ]
     }
