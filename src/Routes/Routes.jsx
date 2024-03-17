@@ -15,6 +15,7 @@ import Secret from "../Layout/Pages/Shared/Secret/Secret";
 
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Layout/Pages/Dashboard/Cart/Cart";
+import AllUsers from "../Layout/Pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -57,7 +58,14 @@ import Cart from "../Layout/Pages/Dashboard/Cart/Cart";
         {
           path: "cart", 
           element:<Cart></Cart>
-        }
+        },
+           // admin routes
+           {
+            path: 'users',
+            element: <AllUsers></AllUsers>
+          }
+
+
       ]
     }
   ]);
