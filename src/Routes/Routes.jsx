@@ -3,6 +3,7 @@ import {
   } from "react-router-dom";
 
 
+
 import Main from "../Layout/Main";
 import Home from "../Layout/Pages/Home/Home/Home";
 import Menu from "../Layout/Pages/Menu/Menu/Menu";
@@ -12,10 +13,15 @@ import SignUp from "../Layout/Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../Layout/Pages/Shared/Secret/Secret";
 
-
 import Dashboard from "../Layout/Dashboard";
-import Cart from "../Layout/Pages/Dashboard/Cart/Cart";
+
+import AdminRoute from "./AdminRoute";
+import AddItems from "../Layout/Pages/Dashboard/AddItems/AddItems";
 import AllUsers from "../Layout/Pages/Dashboard/AllUsers/AllUsers";
+import Cart from "../Layout/Pages/Dashboard/Cart/Cart";
+import ManageItems from "../Layout/Pages/Dashboard/ManageItems/ManageItems";
+
+
 
 
 
@@ -26,46 +32,52 @@ import AllUsers from "../Layout/Pages/Dashboard/AllUsers/AllUsers";
       children: [
         {
             path: '/',
-            element:<Home></Home>
+            element: <Home></Home>
+        }, 
+        {
+          path: 'menu', 
+          element: <Menu></Menu>
         },
         {
-          path:"menu",
-          element:<Menu></Menu>
+          path: 'order/:category',
+          element: <Order></Order>
         },
-       {
-        path: 'order/:category',
-        element:<Order></Order>
-       },
-       {
-        path:"login",
-        element:<Login></Login>
-       },
-       {
-        path: 'signup',
-        element:<SignUp></SignUp>
-       },
-       {
-        path: 'secret',
-        element: <PrivateRoute><Secret></Secret></PrivateRoute>
-      }
+        {
+          path: 'login',
+          element: <Login></Login>
+        },
+        {
+          path: 'signup',
+          element: <SignUp></SignUp>
+        },
+        {
+          path: 'secret',
+          element: <PrivateRoute><Secret></Secret></PrivateRoute>
+        }
       ]
     },
-
     {
       path: 'dashboard',
-      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>, 
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        // normal user routes
         {
-          path: "cart", 
+          path: 'cart',
           element:<Cart></Cart>
         },
-           // admin routes
-           {
-            path: 'users',
-            element: <AllUsers></AllUsers>
-          }
-
-
-      ]
-    }
+        // admin only routes
+        {
+          path: 'addItems',
+          element:<AdminRoute><AddItems></AddItems></AdminRoute>
+        },
+        {
+          path: 'manageItems',
+          element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+        },
+        {
+          path: 'users',
+          element: <AllUsers></AllUsers>
+        }
+  ]
+}
   ]);
