@@ -20,6 +20,7 @@ import AddItems from "../Layout/Pages/Dashboard/AddItems/AddItems";
 import AllUsers from "../Layout/Pages/Dashboard/AllUsers/AllUsers";
 import Cart from "../Layout/Pages/Dashboard/Cart/Cart";
 import ManageItems from "../Layout/Pages/Dashboard/ManageItems/ManageItems";
+import UpdateItem from "../Layout/Pages/Dashboard/UpdateItem/UpdateItem";
 
 
 
@@ -73,6 +74,11 @@ import ManageItems from "../Layout/Pages/Dashboard/ManageItems/ManageItems";
         {
           path: 'manageItems',
           element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+        },
+        {
+          path: 'updateItem/:id',
+          element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
         },
         {
           path: 'users',
